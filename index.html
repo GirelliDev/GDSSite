@@ -437,12 +437,12 @@ footer .social-links a:hover {
 
     <section id="contact" class="contact">
         <h2>Contato</h2>
-        <form action="#" method="post">
-            <input type="text" name="name" placeholder="Seu Nome" required>
-            <input type="email" name="email" placeholder="Seu Email" required>
-            <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-            <button type="submit">Enviar Mensagem</button>
-        </form>
+<form id="contactForm">
+    <input type="text" id="name" placeholder="Seu Nome" required>
+    <input type="email" id="email" placeholder="Seu Email" required>
+    <textarea id="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+    <button type="submit">Enviar Mensagem</button>
+</form>
     </section>
 
     <footer>
@@ -477,59 +477,26 @@ footer .social-links a:hover {
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
-        const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1457951400355954819/vChWSTXMG0bs5aFPHjP0vPNitRibLBQvXavXFH6veMcX8PRYhgyql09_8VHygUQSDao9";
-const COOLDOWN = 60 * 1000; // 60s
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-const form = document.getElementById("contactForm");
-const statusEl = document.getElementById("status");
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    const texto =
+`📩 *Novo contato pelo site*
 
-  const last = localStorage.getItem("lastSend");
-  if (last && Date.now() - last < COOLDOWN) {
-    statusEl.textContent = "Calma, camarada. Aguarde um minuto.";
-    return;
-  }
+👤 Nome: ${name}
+📧 Email: ${email}
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+💬 Mensagem:
+${message}`;
 
-  if (!name || !email || !message) {
-    statusEl.textContent = "Preenche tudo, cidadão.";
-    return;
-  }
+    const numero = "5554997065225"; // exemplo: 5511999999999
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
 
-  statusEl.textContent = "Enviando…";
-
-  try {
-await fetch(WEBHOOK_URL, {
-  method: "POST",
-  mode: "no-cors",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    embeds: [{
-      title: "📩 Novo Contato",
-      color: 0xffffff,
-      fields: [
-        { name: "👤 Nome", value: name },
-        { name: "📧 Email", value: email },
-        { name: "💬 Mensagem", value: message }
-      ],
-      timestamp: new Date().toISOString()
-    }]
-  })
-});
-
-    localStorage.setItem("lastSend", Date.now());
-    statusEl.textContent = "Mensagem enviada. Союз (união).";
-    form.reset();
-  } catch {
-    statusEl.textContent = "Falhou. Estado triste.";
-  }
+    window.open(url, "_blank");
 });
     </script>
 </body>
