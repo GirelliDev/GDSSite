@@ -504,22 +504,25 @@ form.addEventListener("submit", async (e) => {
   statusEl.textContent = "Enviando…";
 
   try {
-    await fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        embeds: [{
-          title: "📩 Novo Contato",
-          color: 0xffffff,
-          fields: [
-            { name: "👤 Nome", value: name },
-            { name: "📧 Email", value: email },
-            { name: "💬 Mensagem", value: message }
-          ],
-          timestamp: new Date().toISOString()
-        }]
-      })
-    });
+await fetch(WEBHOOK_URL, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    embeds: [{
+      title: "📩 Novo Contato",
+      color: 0xffffff,
+      fields: [
+        { name: "👤 Nome", value: name },
+        { name: "📧 Email", value: email },
+        { name: "💬 Mensagem", value: message }
+      ],
+      timestamp: new Date().toISOString()
+    }]
+  })
+});
 
     localStorage.setItem("lastSend", Date.now());
     statusEl.textContent = "Mensagem enviada. Союз (união).";
