@@ -454,8 +454,30 @@ footer .social-links a:hover {
         </div>
     </footer>
 
-<script>
-const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1457951400355954819/vChWSTXMG0bs5aFPHjP0vPNitRibLBQvXavXFH6veMcX8PRYhgyql09_8VHygUQSDao9";
+    <script>
+        // Rolagem suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação de entrada nas seções
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1457951400355954819/vChWSTXMG0bs5aFPHjP0vPNitRibLBQvXavXFH6veMcX8PRYhgyql09_8VHygUQSDao9";
 const COOLDOWN = 60 * 1000; // 60s
 
 const form = document.getElementById("contactForm");
@@ -506,7 +528,6 @@ form.addEventListener("submit", async (e) => {
     statusEl.textContent = "Falhou. Estado triste.";
   }
 });
-</script>
-
+    </script>
 </body>
 </html>
