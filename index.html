@@ -1,501 +1,340 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Girelli Dev - Desenvolvedor Fullstack especializado em transformar ideias em sistemas robustos e funcionais. Trabalhando com React, Next.js, TypeScript, Node.js, Express, PostgreSQL, MongoDB e Docker.">
-    <meta name="keywords" content="desenvolvedor fullstack, React, Next.js, TypeScript, Node.js, Express, PostgreSQL, MongoDB, Docker, freelancer">
-    <title>GirelliDev - Desenvolvedor Fullstack</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="shortcut icon" href="fav.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Reset e base */
-/* Reset e base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Girelli Dev - Desenvolvedor Fullstack focado em sistemas sólidos, escaláveis e bem arquitetados.">
+<title>GirelliDev — Fullstack Developer</title>
+
+<link rel="shortcut icon" href="fav.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+--bg:#0e0e0e;
+--card:#1a1a1a;
+--text:#f5f5f5;
+--muted:#9b9b9b;
+--accent:#ffffff;
+--border:#2a2a2a;
+--radius:14px;
+--transition:0.3s;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #000;
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Roboto,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
 }
 
-/* Header */
-header {
-    background-color: rgba(51, 51, 51, 0.9);
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #333;
+section{
+max-width:1200px;
+margin:auto;
+padding:5rem 2rem;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+h2{
+font-size:2.6rem;
+margin-bottom:2.5rem;
+text-align:center;
+letter-spacing:-1px;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
+p{color:var(--muted)}
+
+header{
+position:sticky;
+top:0;
+background:rgba(14,14,14,.95);
+border-bottom:1px solid var(--border);
+z-index:10;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:auto;
+padding:1.2rem 2rem;
 }
 
-nav ul li {
-    margin-left: 2rem;
+.logo{
+font-size:1.6rem;
+font-weight:700;
+letter-spacing:1px;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s, transform 0.3s;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+nav ul{
+display:flex;
+gap:1.5rem;
+list-style:none;
 }
 
-nav ul li a:hover {
-    color: #ccc;
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+nav ul a{
+color:var(--muted);
+transition:var(--transition);
 }
 
-/* Seções */
-section {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+nav ul a:hover{
+color:var(--accent);
 }
 
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* HERO */
+.hero{
+text-align:center;
+padding:7rem 2rem 6rem;
 }
 
-/* Hero */
-.hero {
-    background: linear-gradient(135deg, #000 0%, #333 100%);
-    text-align: center;
-    padding: 10rem 2rem 6rem;
-    position: relative;
+.hero h1{
+font-size:3.8rem;
+font-weight:700;
+letter-spacing:-2px;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
-    opacity: 0.1;
+.hero h1 span{
+color:var(--accent);
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    position: relative;
-    z-index: 1;
+.hero p{
+max-width:820px;
+margin:2rem auto;
+font-size:1.25rem;
 }
 
-.hero p {
-    font-size: 1.3rem;
-    color: #ccc;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+.hero button{
+margin-top:2rem;
+background:transparent;
+border:1px solid var(--accent);
+color:var(--accent);
+padding:1rem 2.4rem;
+border-radius:50px;
+font-weight:600;
+cursor:pointer;
+transition:var(--transition);
 }
 
-.hero .cta {
-    margin-top: 2rem;
-    position: relative;
-    z-index: 1;
+.hero button:hover{
+background:var(--accent);
+color:#000;
 }
 
-.cta button {
-    background-color: #fff;
-    color: #000;
-    padding: 1rem 2rem;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+/* GRID / CARDS */
+.grid{
+display:grid;
+gap:2rem;
 }
 
-.cta button:hover {
-    background-color: #ccc;
-    transform: scale(1.05);
+.grid-3{
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 }
 
-/* Seções gerais */
-.about, .skills, .projects, .contact {
-    background-color: #000;
+.card{
+background:var(--card);
+padding:2.5rem;
+border-radius:var(--radius);
+border:1px solid var(--border);
+transition:var(--transition);
 }
 
-.about h2, .skills h2, .projects h2, .contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: #fff;
-    font-weight: 700;
+.card:hover{
+transform:translateY(-6px);
+border-color:var(--accent);
 }
 
-.about p {
-    font-size: 1.2rem;
-    color: #ccc;
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-    line-height: 1.8;
+.card h3{
+margin-bottom:1rem;
+font-size:1.4rem;
 }
 
-/* Skills */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+/* FOOTER */
+footer{
+border-top:1px solid var(--border);
+padding:2.5rem;
+text-align:center;
+color:var(--muted);
+font-size:.9rem;
+}
+.contact-card{
+cursor:pointer;
+text-align:center;
 }
 
-.skill {
-    background-color: #111;
-    padding: 2.5rem;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+.contact-card:hover{
+background:#fff;
+color:#000;
 }
 
-.skill:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+.contact-card:hover p{
+color:#333;
 }
 
-.skill i {
-    font-size: 3rem;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.skill h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.skill p {
-    color: #ccc;
-}
-
-/* Projects */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.project {
-    background-color: #111;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
-}
-
-.project h3 {
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.project p {
-    color: #ccc;
-    margin-bottom: 1rem;
-}
-
-.project a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.project a:hover {
-    color: #ccc;
-}
-
-/* Contact */
-.contact form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact input,
-.contact textarea {
-    width: 100%;
-    padding: 1.2rem;
-    margin-bottom: 1.5rem;
-    background-color: #111;
-    border: 1px solid #333;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.contact input:focus,
-.contact textarea:focus {
-    border-color: #fff;
-    outline: none;
-}
-
-.contact button {
-    background-color: #fff;
-    color: #000;
-    padding: 1.2rem 3rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.contact button:hover {
-    background-color: #ccc;
-    transform: scale(1.05);
-}
-
-/* Footer */
-footer {
-    background-color: #111;
-    padding: 2rem 0;
-    text-align: center;
-    border-top: 1px solid #333;
-}
-
-footer p {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-footer .social-links {
-    margin-top: 1rem;
-}
-
-footer .social-links a {
-    color: #fff;
-    margin: 0 1rem;
-    font-size: 1.5rem;
-    transition: color 0.3s;
-}
-
-footer .social-links a:hover {
-    color: #ccc;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    nav ul {
-        display: none; /* Para mobile, pode adicionar menu hambúrguer */
-    }
-
-    .skills-grid,
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            nav ul {
-                display: none; /* Para mobile, pode adicionar menu hambúrguer */
-            }
-            .skills-grid, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <a href="#hero" class="logo">GirelliDev</a>
-            <ul>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="hero" class="hero">
-        <h1>GirelliDev</h1>
-        <p>Transformando ideias em sistemas robustos e funcionais. Especialista em desenvolvimento fullstack com foco em criatividade, eficiência e soluções inovadoras.</p>
-        <div class="cta">
-            <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Entre em Contato</button>
-        </div>
-    </section>
+<header>
+<nav>
+<div class="logo">GirelliDev</div>
+<ul>
+<li><a href="#about">Sobre</a></li>
+<li><a href="#problems">O que resolvo</a></li>
+<li><a href="#process">Processo</a></li>
+<li><a href="#projects">Projetos</a></li>
+<li><a href="#contact">Contato</a></li>
+</ul>
+</nav>
+</header>
 
-    <section id="about" class="about">
-        <h2>Sobre Mim</h2>
-        <p>GirelliDev é um desenvolvedor fullstack apaixonado por transformar ideias em sistemas robustos e funcionais. Com expertise em tecnologias modernas como React, Next.js, TypeScript, Node.js, Express, PostgreSQL, MongoDB e Docker, ele entrega código limpo, eficiente e confiável. Sua abordagem criativa resolve problemas complexos, mantendo uma arquitetura sólida e performance máxima. Sempre pronto para aceitar desafios, freelas e projetos que exigem soluções fora do comum, Girelli Dev combina técnica e inovação para entregar resultados excepcionais.</p>
-    </section>
+<section class="hero">
+<h1>Sistemas <span>bem pensados</span> duram</h1>
+<p>
+Sou desenvolvedor fullstack focado em criar sistemas estáveis, escaláveis e compreensíveis.
+Nada de código descartável. Nada de solução improvisada.
+Arquitetura clara, execução direta e responsabilidade técnica.
+</p>
+<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+Conversar sobre um projeto
+</button>
+</section>
 
-    <section id="skills" class="skills">
-        <h2>Habilidades</h2>
-        <div class="skills-grid">
-            <div class="skill">
-                <i class="fas fa-code"></i>
-                <h3>Frontend</h3>
-                <p>React, Next.js, TypeScript para interfaces dinâmicas e responsivas.</p>
-            </div>
-            <div class="skill">
-                <i class="fas fa-server"></i>
-                <h3>Backend</h3>
-                <p>Node.js, Express para APIs robustas e escaláveis.</p>
-            </div>
-            <div class="skill">
-                <i class="fas fa-database"></i>
-                <h3>Banco de Dados</h3>
-                <p>PostgreSQL, MongoDB para armazenamento eficiente e flexível.</p>
-            </div>
-            <div class="skill">
-                <i class="fas fa-docker"></i>
-                <h3>DevOps</h3>
-                <p>Docker para containerização e deploy simplificado.</p>
-            </div>
-        </div>
-    </section>
+<section id="about">
+<h2>Sobre mim</h2>
+<p style="max-width:900px;margin:auto;text-align:center">
+Trabalho com desenvolvimento fullstack voltado para aplicações reais, usadas por pessoas reais.
+Minha prioridade é criar software que continue funcionando bem depois de meses e anos,
+não apenas no dia da entrega.
+Tenho foco forte em backend, arquitetura e organização de sistemas,
+sem negligenciar uma interface limpa e funcional.
+</p>
+</section>
 
-    <section id="projects" class="projects">
-        <h2>Projetos</h2>
-        <div class="projects-grid">
-            <div class="project">
-                <h3>Notepad Sharp</h3>
-                <p>IDE moderna para desenvolvimento, construída com C# e Electron, com editor inteligente, depuração integrada e suporte a extensões, integrada com Git e ferramentas de versionamento para otimizar fluxo de trabalho.</p>
-                <a href="https://npsharp.girelli.dev.br/">Ver Projeto <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="project">
-                <h3>IronWatch</h3>
-                <p>Sistema de assistente de IA para WhatsApp, atuando como secretaria digital. Automatiza respostas, organiza agendas, lembra compromissos e otimiza o atendimento via chat.</p>
-                <a href="#">Ver Projeto <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="project">
-                <h3>CoreLab</h3>
-                <p>CORELAB cria sistemas sólidos, escaláveis e sem improviso. Código com dono, processo com ordem e produção tratada como coisa séria.Aqui não se apaga trabalho — se constrói.</p>
-                <a href="https://discord.gg/nPKatzQSPG">Ver Projeto <i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </div>
-    </section>
+<section id="problems">
+<h2>O que eu resolvo</h2>
+<div class="grid grid-3">
+<div class="card">
+<h3>Sistemas que cresceram sem controle</h3>
+<p>
+Reorganização de código, melhoria de arquitetura e redução de complexidade.
+Menos acoplamento, mais previsibilidade.
+</p>
+</div>
+<div class="card">
+<h3>Ideias que precisam virar produto</h3>
+<p>
+Transformo conceitos em aplicações funcionais,
+com stack definida e base sólida para evolução.
+</p>
+</div>
+<div class="card">
+<h3>Automação e eficiência</h3>
+<p>
+Integrações, bots, fluxos automatizados e redução de trabalho manual.
+Software deve economizar tempo, não consumir.
+</p>
+</div>
+</div>
+</section>
 
-    <section id="contact" class="contact">
-        <h2>Contato</h2>
-<form id="contactForm">
-    <input type="text" id="name" placeholder="Seu Nome" required>
-    <input type="email" id="email" placeholder="Seu Email" required>
-    <textarea id="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-    <button type="submit">Enviar Mensagem</button>
-</form>
-    </section>
+<section id="process">
+<h2>Como eu trabalho</h2>
+<div class="grid grid-3">
+<div class="card">
+<h3>1. Entendimento</h3>
+<p>
+Antes de código, vem o problema.
+Entendo o contexto, limitações e objetivos reais.
+</p>
+</div>
+<div class="card">
+<h3>2. Arquitetura</h3>
+<p>
+Defino stack, responsabilidades e estrutura do sistema.
+Aqui se evita dor de cabeça futura.
+</p>
+</div>
+<div class="card">
+<h3>3. Implementação</h3>
+<p>
+Código limpo, versionado, testável e documentado quando necessário.
+</p>
+</div>
+</div>
+</section>
 
-    <footer>
-        <p>&copy; 2023 Girelli Dev. Todos os direitos reservados.</p>
-        <div class="social-links">
-            <a href="github.com/girellidev"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
-    </footer>
+<section id="projects">
+<h2>Projetos</h2>
+<div class="grid grid-3">
+<div class="card">
+<h3>Notepad Sharp</h3>
+<p>
+Ambiente de desenvolvimento focado em produtividade,
+organização e controle total do fluxo de trabalho.
+</p>
+<a href="https://npsharp.girelli.dev.br/" style="color:#fff">Acessar</a>
+</div>
 
-    <script>
-        // Rolagem suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+<div class="card">
+<h3>IronWatch</h3>
+<p>
+Assistente inteligente para WhatsApp,
+automatizando respostas, agendas e processos repetitivos.
+</p>
+</div>
 
-        // Animação de entrada nas seções
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+<div class="card">
+<h3>CoreLab</h3>
+<p>
+Ambiente de desenvolvimento e experimentação
+para sistemas robustos e aplicações em produção.
+</p>
+</div>
+</div>
+</section>
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-        document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+<section id="contact">
+<h2>Contato</h2>
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
+<div class="grid grid-3">
+<div class="card contact-card" onclick="openContact('whatsapp')">
+<h3>WhatsApp</h3>
+<p>Contato direto para projetos e ideias.</p>
+</div>
 
-    const texto =
-` 
-👤 Nome: ${name}
-📧 Email: ${email}
-💬 Mensagem:
-${message}`;
+<div class="card contact-card" onclick="openContact('email')">
+<h3>Email</h3>
+<p>Para propostas formais e detalhes técnicos.</p>
+</div>
 
-    const numero = "5554997065225"; // exemplo: 5511999999999
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+<div class="card contact-card" onclick="openContact('github')">
+<h3>GitHub</h3>
+<p>Ver código, projetos e histórico.</p>
+</div>
+</div>
+</section>
 
-    window.open(url, "_blank");
-});
-    </script>
+<footer>
+© 2026 Girelli Dev — menos hype, mais engenharia.
+</footer>
+<script>
+function openContact(type){
+if(type === 'whatsapp'){
+window.open('https://wa.me/55XXXXXXXXXXX', '_blank');
+}
+
+if(type === 'email'){
+window.location.href = 'mailto:contato@girelli.dev.br';
+}
+
+if(type === 'github'){
+window.open('https://github.com/girellidev', '_blank');
+}
+}
+</script>
+
 </body>
 </html>
